@@ -124,17 +124,29 @@ Group BY s.user_id
 ```
 ## Basic Aggregate Functions
 
-[]()
+[620. Not Boring Movies](https://leetcode.com/problems/not-boring-movies/description/?envType=study-plan-v2&envId=top-sql-50)
 ```sql
-
+SELECT *
+FROM cinema
+WHERE description != 'boring'
+AND mod(id, 2) = 1
+ORDER BY rating DESC
 ```
-[]()
+[1251. Average Selling Price](https://leetcode.com/problems/average-selling-price/description/?envType=study-plan-v2&envId=top-sql-50)
 ```sql
-
+SELECT p.product_id, ROUND(IFNULL(SUM(u.units * p.price) / SUM(u.units), 0), 2) AS average_price
+FROM Prices p
+LEFT JOIN UnitsSold u
+ON p.product_id = u.product_id  AND u.purchase_date <= p.end_date AND u.purchase_date >= p.start_date
+GROUP BY p.product_id
 ```
-[]()
+[1075. Project Employees I](https://leetcode.com/problems/project-employees-i/?envType=study-plan-v2&envId=top-sql-50)
 ```sql
-
+SELECT p.project_id, ROUND(IFNULL(SUM(e.experience_years) / COUNT(p.employee_id), 0), 2) AS average_years
+FROM Project p
+LEFT JOIN Employee e
+ON p.employee_id = e.employee_id
+GROUP BY p.project_id
 ```
 []()
 ```sql
